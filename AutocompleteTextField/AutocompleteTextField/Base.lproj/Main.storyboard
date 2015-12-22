@@ -1,81 +1,160 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1509" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1509" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="IJN-ai-a6a">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Table View Controller-->
+        <scene sceneID="miA-r6-VFO">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="AutocompleteTextField" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                <tableViewController id="IJN-ai-a6a" customClass="TableViewController" customModule="AutocompleteTextField" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="BmW-Mr-iIc">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="mr5-hn-7gH">
-                                <rect key="frame" x="20" y="20" width="560" height="305"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="6DG-HR-kWA">
-                                        <rect key="frame" x="0.0" y="0.0" width="560" height="104.5"/>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Usage examples" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DDT-lg-4jm">
-                                        <rect key="frame" x="0.0" y="112.5" width="560" height="37"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="StA-fq-muE" userLabel="Email field group">
-                                        <rect key="frame" x="0.0" y="157.5" width="560" height="63.5"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ula-Hs-Gld">
-                                                <rect key="frame" x="0.0" y="0.0" width="560" height="32"/>
-                                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Your email address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mNy-4G-qXr">
-                                                <rect key="frame" x="0.0" y="32" width="560" height="31.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="kWS-mh-eYd" userLabel="Name field group">
-                                        <rect key="frame" x="0.0" y="229" width="560" height="76"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O5a-ZB-sOz">
-                                                <rect key="frame" x="0.0" y="0.0" width="560" height="38"/>
-                                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Your name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vOc-XD-rHx">
-                                                <rect key="frame" x="0.0" y="38" width="560" height="38"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                            </stackView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="mr5-hn-7gH" secondAttribute="bottom" constant="275" id="4yC-Jh-IVo"/>
-                            <constraint firstItem="mr5-hn-7gH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Mn9-A8-QoK"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="mr5-hn-7gH" secondAttribute="trailing" id="OUP-Q9-QvG"/>
-                            <constraint firstItem="mr5-hn-7gH" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="u3I-6l-StN"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                        <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <sections>
+                            <tableViewSection id="6M5-8W-AHt">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="title" rowHeight="134" id="MPZ-QH-ji6" userLabel="Title">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="134"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MPZ-QH-ji6" id="hUv-4t-CG2">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="133.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="QSb-XV-occ">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="134"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" verticalHuggingPriority="249" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="fg9-5W-OBI">
+                                                            <rect key="frame" x="0.0" y="0.0" width="600" height="110"/>
+                                                            <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                                                <rect key="frame" x="0.0" y="0.0" width="400" height="68"/>
+                                                            </variation>
+                                                        </imageView>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Usage examples" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vwl-9J-3GV">
+                                                            <rect key="frame" x="0.0" y="110" width="600" height="24"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                            <color key="textColor" white="0.1108006387" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                            <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                                                <rect key="frame" x="0.0" y="68" width="400" height="66"/>
+                                                            </variation>
+                                                        </label>
+                                                    </subviews>
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="0.0" y="0.0" width="400" height="134"/>
+                                                    </variation>
+                                                </stackView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <constraints>
+                                            <constraint firstItem="QSb-XV-occ" firstAttribute="leading" secondItem="MPZ-QH-ji6" secondAttribute="leading" id="FDh-79-Zib"/>
+                                            <constraint firstItem="QSb-XV-occ" firstAttribute="top" secondItem="MPZ-QH-ji6" secondAttribute="top" id="Yas-HC-f5K"/>
+                                            <constraint firstAttribute="trailing" secondItem="QSb-XV-occ" secondAttribute="trailing" id="Yp2-uq-0DZ"/>
+                                            <constraint firstAttribute="bottom" secondItem="QSb-XV-occ" secondAttribute="bottom" id="fkN-CM-OiV"/>
+                                        </constraints>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="email" rowHeight="169" id="CZE-lv-JEG" userLabel="Email">
+                                        <rect key="frame" x="0.0" y="134" width="600" height="169"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CZE-lv-JEG" id="FHb-UH-jW4">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="168.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="XyR-MC-HE6">
+                                                    <rect key="frame" x="8" y="0.0" width="584" height="169"/>
+                                                    <subviews>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Email address" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jlr-nM-nep" userLabel="Label">
+                                                            <rect key="frame" x="0.0" y="0.0" width="584" height="62.5"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="20"/>
+                                                            <color key="textColor" white="0.1108006387" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Your email address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Znb-76-h8i" userLabel="Field" customClass="AutocompleteTextField" customModule="AutocompleteTextField" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="62.5" width="584" height="44"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                                            <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                            <connections>
+                                                                <outlet property="delegate" destination="IJN-ai-a6a" id="b8q-lu-S7n"/>
+                                                            </connections>
+                                                        </textField>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="A subclass of HTEmailAutocompleteTextField.  It suggests email domains based on its emailDomains array when the user types &quot;@&quot;" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ub-Op-HJ6">
+                                                            <rect key="frame" x="0.0" y="106.5" width="584" height="62.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <constraints>
+                                            <constraint firstItem="XyR-MC-HE6" firstAttribute="top" secondItem="CZE-lv-JEG" secondAttribute="top" id="8dj-Sl-KGl"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="XyR-MC-HE6" secondAttribute="trailing" id="TsN-3x-ROj"/>
+                                            <constraint firstAttribute="bottom" secondItem="XyR-MC-HE6" secondAttribute="bottom" id="iFm-FG-ggT"/>
+                                            <constraint firstItem="XyR-MC-HE6" firstAttribute="leading" secondItem="CZE-lv-JEG" secondAttribute="leadingMargin" id="teG-OO-54w"/>
+                                        </constraints>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="name" rowHeight="177" id="3CO-cU-fet" userLabel="Name">
+                                        <rect key="frame" x="0.0" y="303" width="600" height="177"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3CO-cU-fet" id="XIx-hE-fjH">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="176.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="so6-t3-Lyi">
+                                                    <rect key="frame" x="8" y="0.0" width="584" height="177"/>
+                                                    <subviews>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VtL-8w-JMG" userLabel="Label">
+                                                            <rect key="frame" x="0.0" y="0.0" width="584" height="66"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="20"/>
+                                                            <color key="textColor" white="0.1108006387" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YRZ-hJ-O4f" userLabel="Field" customClass="AutocompleteTextField" customModule="AutocompleteTextField" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="66" width="584" height="46"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                                            <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                            <connections>
+                                                                <outlet property="delegate" destination="IJN-ai-a6a" id="c9h-8A-vjW"/>
+                                                            </connections>
+                                                        </textField>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rSV-mS-XFO">
+                                                            <rect key="frame" x="0.0" y="112" width="584" height="66"/>
+                                                            <string key="text">A subclass of HTAutocompleteTextField.  Its current text is passed to its data source (currently HTAutocompleteManager), which returns a completion suggestion.</string>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <constraints>
+                                            <constraint firstAttribute="trailingMargin" secondItem="so6-t3-Lyi" secondAttribute="trailing" id="8AY-JG-c1I"/>
+                                            <constraint firstItem="so6-t3-Lyi" firstAttribute="top" secondItem="3CO-cU-fet" secondAttribute="top" id="Mq4-Yf-GhA"/>
+                                            <constraint firstAttribute="bottom" secondItem="so6-t3-Lyi" secondAttribute="bottom" id="Sfr-gq-ttC"/>
+                                            <constraint firstItem="so6-t3-Lyi" firstAttribute="leading" secondItem="3CO-cU-fet" secondAttribute="leadingMargin" id="wvx-AN-d1X"/>
+                                        </constraints>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="IJN-ai-a6a" id="pBn-Af-sOw"/>
+                            <outlet property="delegate" destination="IJN-ai-a6a" id="YQv-4Z-XSW"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="emailField" destination="Znb-76-h8i" id="437-qb-X8J"/>
+                        <outlet property="nameField" destination="YRZ-hJ-O4f" id="yXa-hH-kz9"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yj1-ya-UcP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="3" y="283"/>
         </scene>
     </scenes>
     <resources>

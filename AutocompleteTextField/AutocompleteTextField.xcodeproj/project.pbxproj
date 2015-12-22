@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		36464F581C29ABB800942BE3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36464F571C29ABB800942BE3 /* AppDelegate.swift */; };
-		36464F5A1C29ABB800942BE3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36464F591C29ABB800942BE3 /* ViewController.swift */; };
+		36464F5A1C29ABB800942BE3 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36464F591C29ABB800942BE3 /* TableViewController.swift */; };
 		36464F5D1C29ABB800942BE3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36464F5B1C29ABB800942BE3 /* Main.storyboard */; };
 		36464F5F1C29ABB800942BE3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36464F5E1C29ABB800942BE3 /* Assets.xcassets */; };
 		36464F621C29ABB800942BE3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36464F601C29ABB800942BE3 /* LaunchScreen.storyboard */; };
 		36464F6D1C29ABB900942BE3 /* AutocompleteTextFieldTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36464F6C1C29ABB900942BE3 /* AutocompleteTextFieldTests.swift */; };
 		36464F781C29ABB900942BE3 /* AutocompleteTextFieldUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36464F771C29ABB900942BE3 /* AutocompleteTextFieldUITests.swift */; };
+		36464F861C29B1E600942BE3 /* AutocompleteTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36464F851C29B1E600942BE3 /* AutocompleteTextField.swift */; };
+		36464F881C29ECF000942BE3 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36464F871C29ECF000942BE3 /* DataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +38,7 @@
 /* Begin PBXFileReference section */
 		36464F541C29ABB800942BE3 /* AutocompleteTextField.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutocompleteTextField.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36464F571C29ABB800942BE3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		36464F591C29ABB800942BE3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		36464F591C29ABB800942BE3 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		36464F5C1C29ABB800942BE3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		36464F5E1C29ABB800942BE3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		36464F611C29ABB800942BE3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +49,8 @@
 		36464F731C29ABB900942BE3 /* AutocompleteTextFieldUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AutocompleteTextFieldUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		36464F771C29ABB900942BE3 /* AutocompleteTextFieldUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteTextFieldUITests.swift; sourceTree = "<group>"; };
 		36464F791C29ABB900942BE3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		36464F851C29B1E600942BE3 /* AutocompleteTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutocompleteTextField.swift; sourceTree = "<group>"; };
+		36464F871C29ECF000942BE3 /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,11 +102,13 @@
 			isa = PBXGroup;
 			children = (
 				36464F571C29ABB800942BE3 /* AppDelegate.swift */,
-				36464F591C29ABB800942BE3 /* ViewController.swift */,
+				36464F591C29ABB800942BE3 /* TableViewController.swift */,
 				36464F5B1C29ABB800942BE3 /* Main.storyboard */,
 				36464F5E1C29ABB800942BE3 /* Assets.xcassets */,
 				36464F601C29ABB800942BE3 /* LaunchScreen.storyboard */,
 				36464F631C29ABB800942BE3 /* Info.plist */,
+				36464F851C29B1E600942BE3 /* AutocompleteTextField.swift */,
+				36464F871C29ECF000942BE3 /* DataSource.swift */,
 			);
 			path = AutocompleteTextField;
 			sourceTree = "<group>";
@@ -256,7 +262,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				36464F5A1C29ABB800942BE3 /* ViewController.swift in Sources */,
+				36464F881C29ECF000942BE3 /* DataSource.swift in Sources */,
+				36464F861C29B1E600942BE3 /* AutocompleteTextField.swift in Sources */,
+				36464F5A1C29ABB800942BE3 /* TableViewController.swift in Sources */,
 				36464F581C29ABB800942BE3 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -484,6 +492,7 @@
 				36464F7E1C29ABB900942BE3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		36464F7F1C29ABB900942BE3 /* Build configuration list for PBXNativeTarget "AutocompleteTextFieldTests" */ = {
 			isa = XCConfigurationList;
@@ -492,6 +501,7 @@
 				36464F811C29ABB900942BE3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		36464F821C29ABB900942BE3 /* Build configuration list for PBXNativeTarget "AutocompleteTextFieldUITests" */ = {
 			isa = XCConfigurationList;
@@ -500,6 +510,7 @@
 				36464F841C29ABB900942BE3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
