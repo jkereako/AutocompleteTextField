@@ -16,7 +16,8 @@ class TableViewController: UITableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    guard let name = nameField, let _ = emailField else {
+    guard let name = nameField, let email = emailField else {
+      assertionFailure("Name field is nil. Did you forget to wire it up in Storyboard Builder?")
       return
     }
 
