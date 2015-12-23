@@ -1,7 +1,8 @@
 # Autocomplete text field
 A Swift version of HotelTonight's (RIP) [HTAutocompleteTextField](https://github.com/hoteltonight/HTAutocompleteTextField)
 
-This is *not a framework*.
+This is *not a framework*. For something this simple, I think it's unnecessary to install this via CocoaPods or Carthage.
+
 # Usage
 Copy `AutocompleteTextField` into your project. Change the class type of your textfield from `UITextField` to `AutocompleteTextField` in In Storyboard Builder or programatically. Define a data source struct and have it implement the protocol `AutocompleteDataSource`. Finally, wire everything together in your view controller's `viewDidLoad()` method:
 
