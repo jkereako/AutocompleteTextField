@@ -21,7 +21,8 @@ class TableViewController: UITableViewController {
       return
     }
 
-    name.dataSource = DataSource()
+    name.autoCompleteDataSource = DataSource()
+    name.autoCompleteDelegate = self
     name.suggestionLabelPosition = CGPointMake(0, -0.5)
   }
 }
@@ -40,3 +41,13 @@ extension TableViewController: UITextFieldDelegate {
   }
 }
 
+extension TableViewController: AutocompleteDelegate {
+  func textfield(textfield: AutocompleteTextField, didAcceptSuggestion suggestion: String) {
+
+    let dataSource = DataSource()
+
+    if let rawText = dataSource.rawTextForSuggestion(suggestion) {
+      textfield.text = rawText
+    }
+  }
+}

@@ -103,12 +103,12 @@
 			children = (
 				36464F571C29ABB800942BE3 /* AppDelegate.swift */,
 				36464F591C29ABB800942BE3 /* TableViewController.swift */,
+				36464F851C29B1E600942BE3 /* AutocompleteTextField.swift */,
+				36464F871C29ECF000942BE3 /* DataSource.swift */,
 				36464F5B1C29ABB800942BE3 /* Main.storyboard */,
 				36464F5E1C29ABB800942BE3 /* Assets.xcassets */,
 				36464F601C29ABB800942BE3 /* LaunchScreen.storyboard */,
 				36464F631C29ABB800942BE3 /* Info.plist */,
-				36464F851C29B1E600942BE3 /* AutocompleteTextField.swift */,
-				36464F871C29ECF000942BE3 /* DataSource.swift */,
 			);
 			path = AutocompleteTextField;
 			sourceTree = "<group>";

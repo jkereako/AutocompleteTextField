@@ -42,6 +42,11 @@ struct DataSource {
     "Xao",
     "Yilton",
     "Zander"]
+
+  // Returns the actual text for the accepted suggestion
+  func rawTextForSuggestion(suggestion: String) -> String? {
+    return dataSource.filter { $0.lowercaseString == suggestion.lowercaseString }.first
+  }
 }
 
 // MARK: - AutocompleteDataSource

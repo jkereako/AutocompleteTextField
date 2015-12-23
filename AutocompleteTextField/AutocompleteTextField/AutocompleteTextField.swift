@@ -12,8 +12,13 @@ protocol AutocompleteDataSource {
   func textfield(textfield: AutocompleteTextField, predictionForPrefix prefix: String) -> String
 }
 
+protocol AutocompleteDelegate: class {
+  func textfield(textfield: AutocompleteTextField, didAcceptSuggestion suggestion: String)
+}
+
 class AutocompleteTextField: UITextField {
-  var dataSource: AutocompleteDataSource?
+  var autoCompleteDataSource: AutocompleteDataSource?
+  weak var autoCompleteDelegate: AutocompleteDelegate?
   var suggestionLabelPosition: CGPoint
 
   private let suggestionLabel: UILabel
@@ -64,7 +69,7 @@ class AutocompleteTextField: UITextField {
   }
 
   func textDidChange() {
-    guard let someText = text, let aDataSource = dataSource else {
+    guard let someText = text, let aDataSource = autoCompleteDataSource else {
       return
     }
 
@@ -140,6 +145,8 @@ extension AutocompleteTextField {
     }
 
     text? += suggestion
+    
+    autoCompleteDelegate?.textfield(self, didAcceptSuggestion: text!)
 
     suggestionLabel(label, updateWithSuggestion: suggestion)
 
