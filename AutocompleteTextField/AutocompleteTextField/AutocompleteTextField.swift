@@ -14,24 +14,21 @@ protocol AutocompleteDataSource {
 
 class AutocompleteTextField: UITextField {
   var dataSource: AutocompleteDataSource?
-  var suggestionLabelOffsetPosition: CGPoint
+  var suggestionLabelPosition: CGPoint
 
-  private var suggestion: String
   private let suggestionLabel: UILabel
 
   override init(frame: CGRect) {
-    suggestion = ""
     suggestionLabel = UILabel(frame: CGRectZero)
-    suggestionLabelOffsetPosition = CGPointZero
+    suggestionLabelPosition = CGPointZero
     super.init(frame: frame)
 
     setUp(suggestionLabel: suggestionLabel)
   }
 
   required init?(coder aDecoder: NSCoder) {
-    suggestion = ""
     suggestionLabel = UILabel(frame: CGRectZero)
-    suggestionLabelOffsetPosition = CGPointZero
+    suggestionLabelPosition = CGPointZero
 
     super.init(coder: aDecoder)
 
@@ -54,6 +51,7 @@ class AutocompleteTextField: UITextField {
     label.textColor = UIColor.grayColor()
     label.lineBreakMode = .ByClipping
     label.hidden = true
+
     addSubview(label)
     bringSubviewToFront(label)
 
@@ -70,6 +68,7 @@ class AutocompleteTextField: UITextField {
       return
     }
 
+    // Find a prediction for a given data source
     suggestionLabel(suggestionLabel, findPredictionWithText: someText, usingDataSource: aDataSource)
   }
 }
@@ -130,7 +129,7 @@ extension AutocompleteTextField {
       rectForBounds: bounds,
       withSuggestion: suggestion,
       font: font,
-      offset: suggestionLabelOffsetPosition
+      offset: suggestionLabelPosition
     )
   }
 
@@ -165,8 +164,11 @@ extension AutocompleteTextField {
 
   override func resignFirstResponder() -> Bool {
     suggestionLabel.hidden = true
-    suggestionLabel(suggestionLabel, acceptSuggestion: suggestion)
-    
+
+    if let suggestion = suggestionLabel.text {
+      suggestionLabel(suggestionLabel, acceptSuggestion: suggestion)
+    }
+
     return super.resignFirstResponder()
   }
 }
