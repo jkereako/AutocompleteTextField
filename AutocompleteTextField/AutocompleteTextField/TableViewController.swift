@@ -16,7 +16,7 @@ class TableViewController: UITableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    guard let name = nameField, let email = emailField else {
+    guard let name = nameField, let _ = emailField else {
       return
     }
 

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct DataSource: AutocompleteDataSource {
+struct DataSource {
   private let dataSource = [
     "Alfred",
     "Bertha",
@@ -41,7 +41,10 @@ struct DataSource: AutocompleteDataSource {
     "Xao",
     "Yilton",
     "Zander"]
+}
 
+// MARK: - AutocompleteDataSource
+extension DataSource: AutocompleteDataSource {
   func textfield(textfield: AutocompleteTextField, predictionForPrefix prefix: String) -> String {
     // Add support for CSV
     let components = prefix.componentsSeparatedByString(",")
@@ -54,7 +57,7 @@ struct DataSource: AutocompleteDataSource {
           // Make autocompletion case insensitive
           if string.lowercaseString.hasPrefix(aPrefix.lowercaseString),
             let range = string.lowercaseString.rangeOfString(aPrefix.lowercaseString) {
-            return string.stringByReplacingCharactersInRange(range, withString: "")
+              return string.stringByReplacingCharactersInRange(range, withString: "")
           }
         }
     }
