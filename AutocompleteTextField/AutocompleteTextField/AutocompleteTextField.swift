@@ -73,6 +73,7 @@ class AutocompleteTextField: UITextField {
   }
 }
 
+// MARK: - Private methods
 extension AutocompleteTextField {
   private func suggestionLabel(label: UILabel, rectForBounds bounds: CGRect,
     withSuggestion suggestion: String, font: UIFont?, offset: CGPoint ) -> CGRect {
