@@ -21,7 +21,7 @@ class TableViewController: UITableViewController {
     }
 
     name.dataSource = DataSource()
-    name.suggestionLabelOffsetPosition = CGPointMake(0, -1)
+    name.suggestionLabelOffsetPosition = CGPointMake(0, -0.5)
   }
 }
 

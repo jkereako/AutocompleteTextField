@@ -11,12 +11,17 @@ import Foundation
 struct DataSource: AutocompleteDataSource {
   private let dataSource = [
     "Alfred",
+    "Bertha",
     "Beth",
     "Carlos",
+    "Charlie",
     "Daniel",
+    "Donald",
+    "Edward",
     "Ethan",
     "Fred",
     "George",
+    "Gregory",
     "Helen",
     "Inis",
     "Jennifer",
@@ -37,19 +42,23 @@ struct DataSource: AutocompleteDataSource {
     "Yilton",
     "Zander"]
 
-  func textfield(textfield: AutocompleteTextField, completionForPrefix prefix: String) -> String {
+  func textfield(textfield: AutocompleteTextField, predictionForPrefix prefix: String) -> String {
+    // Add support for CSV
     let components = prefix.componentsSeparatedByString(",")
-    if let actualPrefix = components.last?.stringByTrimmingCharactersInSet(
+
+    // Always add a suggestion for the right-most component
+    if let aPrefix = components.last?.stringByTrimmingCharactersInSet(
       NSCharacterSet.whitespaceAndNewlineCharacterSet()
       ) {
-
         for string in dataSource {
-          if string.hasPrefix(actualPrefix), let range = string.rangeOfString(actualPrefix) {
+          // Make autocompletion case insensitive
+          if string.lowercaseString.hasPrefix(aPrefix.lowercaseString),
+            let range = string.lowercaseString.rangeOfString(aPrefix.lowercaseString) {
             return string.stringByReplacingCharactersInRange(range, withString: "")
           }
         }
     }
 
-    return "TEST"
+    return ""
   }
 }

@@ -9,7 +9,7 @@
 import UIKit
 
 protocol AutocompleteDataSource {
-  func textfield(textfield: AutocompleteTextField, completionForPrefix prefix: String) -> String
+  func textfield(textfield: AutocompleteTextField, predictionForPrefix prefix: String) -> String
 }
 
 class AutocompleteTextField: UITextField {
@@ -25,7 +25,7 @@ class AutocompleteTextField: UITextField {
     suggestionLabelOffsetPosition = CGPointZero
     super.init(frame: frame)
 
-    initializeSuggestionLabel()
+    setUp(suggestionLabel: suggestionLabel)
   }
 
   required init?(coder aDecoder: NSCoder) {
@@ -35,7 +35,7 @@ class AutocompleteTextField: UITextField {
 
     super.init(coder: aDecoder)
 
-    initializeSuggestionLabel()
+    setUp(suggestionLabel: suggestionLabel)
   }
 
   deinit {
@@ -48,13 +48,16 @@ class AutocompleteTextField: UITextField {
     }
   }
 
-  func initializeSuggestionLabel() {
-    suggestionLabel.font = font
-    suggestionLabel.backgroundColor = UIColor.clearColor()
-    suggestionLabel.textColor = UIColor.grayColor()
-    suggestionLabel.lineBreakMode = .ByClipping
-    suggestionLabel.hidden = true
+  func setUp(suggestionLabel label: UILabel) {
+    label.font = font
+    label.backgroundColor = UIColor.clearColor()
+    label.textColor = UIColor.grayColor()
+    label.lineBreakMode = .ByClipping
+    label.hidden = true
+    addSubview(label)
+    bringSubviewToFront(label)
 
+    // Be aware each time the textfield changes
     NSNotificationCenter.defaultCenter().addObserver(self,
       selector: Selector("textDidChange"),
       name: UITextFieldTextDidChangeNotification,
@@ -63,71 +66,89 @@ class AutocompleteTextField: UITextField {
   }
 
   func textDidChange() {
-    refreshSuggestionText()
-  }
-
-  func suggestionLabelRectForBounds(bounds: CGRect) -> CGRect {
-    let textContainer = textRectForBounds(bounds)
-
-    guard let textRange = textRangeFromPosition(beginningOfDocument, toPosition: endOfDocument) else {
-      return CGRectZero
+    guard let someText = text, let aDataSource = dataSource else {
+      return
     }
 
-    let textRect = CGRectIntegral(firstRectForRange(textRange))
+    suggestionLabel(suggestionLabel, findPredictionWithText: someText, usingDataSource: aDataSource)
+  }
+}
 
-    let pStyle = NSMutableParagraphStyle()
-    pStyle.lineBreakMode = suggestionLabel.lineBreakMode
+extension AutocompleteTextField {
+  private func suggestionLabel(label: UILabel, rectForBounds bounds: CGRect,
+    withSuggestion suggestion: String, font: UIFont?, offset: CGPoint ) -> CGRect {
+      let textContainer = textRectForBounds(bounds)
 
-    let prefixTextRect = text?.boundingRectWithSize(textContainer.size,
-      options: [.UsesLineFragmentOrigin, .UsesFontLeading],
-      attributes: [NSFontAttributeName: font ?? UIFont.systemFontOfSize(17.0), NSParagraphStyleAttributeName: pStyle],
-      context: nil
-    )
+      guard let textRange = textRangeFromPosition(
+        beginningOfDocument,
+        toPosition: endOfDocument) else {
+        return CGRectZero
+      }
 
-    let prefixTextSize = prefixTextRect?.size
+      let textRect = CGRectIntegral(firstRectForRange(textRange))
 
-    let suggestionTextRect = suggestion.boundingRectWithSize(
-      CGSizeMake(textContainer.size.width - (prefixTextSize?.width ?? 0), textContainer.size.height),
-      options: [.UsesLineFragmentOrigin, .UsesFontLeading],
-      attributes: [NSFontAttributeName: suggestionLabel.font, NSParagraphStyleAttributeName: pStyle],
-      context: nil
-    )
+      let pStyle = NSMutableParagraphStyle()
+      pStyle.lineBreakMode = label.lineBreakMode
 
-    let suggestionTextSize = suggestionTextRect.size
+      let prefixTextRect = text?.boundingRectWithSize(textContainer.size,
+        options: [.UsesLineFragmentOrigin, .UsesFontLeading],
+        attributes: [NSFontAttributeName: font ?? UIFont.systemFontOfSize(17.0), NSParagraphStyleAttributeName: pStyle],
+        context: nil
+      )
 
-    return CGRectMake(
-      CGRectGetMinX(textContainer) + CGRectGetMaxX(textRect) + suggestionLabelOffsetPosition.x,
-      CGRectGetMinY(textContainer) + suggestionLabelOffsetPosition.y,
-      suggestionTextSize.width,
-      textContainer.size.height
+      let prefixTextSize = prefixTextRect?.size
+
+      let suggestionTextRect = suggestion.boundingRectWithSize(
+        CGSizeMake(textContainer.size.width - (prefixTextSize?.width ?? 0), textContainer.size.height),
+        options: [.UsesLineFragmentOrigin, .UsesFontLeading],
+        attributes: [NSFontAttributeName: label.font, NSParagraphStyleAttributeName: pStyle],
+        context: nil
+      )
+
+      let suggestionTextSize = suggestionTextRect.size
+
+      return CGRectMake(
+        CGRectGetMinX(textContainer) + CGRectGetMaxX(textRect) + offset.x,
+        CGRectGetMinY(textContainer) + offset.y,
+        suggestionTextSize.width,
+        textContainer.size.height
+      )
+  }
+
+  private func suggestionLabel(label: UILabel, findPredictionWithText text: String,
+    usingDataSource dataSource: AutocompleteDataSource) {
+
+      let aSuggestion = dataSource.textfield(self, predictionForPrefix: text)
+
+      suggestionLabel(suggestionLabel, updateWithSuggestion: aSuggestion)
+  }
+
+  private func suggestionLabel(label: UILabel, updateWithSuggestion suggestion: String) {
+    label.text = suggestion
+    label.sizeToFit()
+    label.frame = suggestionLabel(label,
+      rectForBounds: bounds,
+      withSuggestion: suggestion,
+      font: font,
+      offset: suggestionLabelOffsetPosition
     )
   }
 
-  func acceptSuggestion() {
+  private func suggestionLabel(label: UILabel, acceptSuggestion suggestion: String) {
     guard !suggestion.isEmpty else {
       return
     }
 
     text? += suggestion
-    suggestion = ""
 
-    updateSuggestionLabel()
-  }
+    suggestionLabel(label, updateWithSuggestion: suggestion)
 
-  func refreshSuggestionText() {
-    guard let aDataSource = dataSource else {
-      return
-    }
-
-    suggestion = aDataSource.textfield(self, completionForPrefix: text ?? "")
-
-    updateSuggestionLabel()
-  }
-
-  func updateSuggestionLabel() {
-    suggestionLabel.text = suggestion
-    suggestionLabel.sizeToFit()
-    suggestionLabel.frame = suggestionLabelRectForBounds(bounds)
+    // Programmatic changes to `text` are not automatically fired. Hence, we must do so manually.
+    sendActionsForControlEvents(.EditingChanged)
+    NSNotificationCenter.defaultCenter().postNotificationName(
+      UITextFieldTextDidChangeNotification,
+      object: self
+    )
   }
 }
 
@@ -144,6 +165,7 @@ extension AutocompleteTextField {
 
   override func resignFirstResponder() -> Bool {
     suggestionLabel.hidden = true
+    suggestionLabel(suggestionLabel, acceptSuggestion: suggestion)
     
     return super.resignFirstResponder()
   }
