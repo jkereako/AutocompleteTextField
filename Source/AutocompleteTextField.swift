@@ -23,16 +23,13 @@ class AutocompleteTextField: UITextField {
   @IBInspectable var suggestionColor: UIColor = UIColor.grayColor()
   @IBInspectable var suggestionBackgroundColor: UIColor = UIColor.clearColor()
 
+  var suggestionLabelPosition = CGPointZero
+  private let suggestionLabel = UILabel(frame: CGRectZero)
+
   var autoCompleteDataSource: AutocompleteDataSource?
   weak var autoCompleteDelegate: AutocompleteDelegate?
-  var suggestionLabelPosition: CGPoint
-
-  private let suggestionLabel: UILabel
 
   override init(frame: CGRect) {
-    suggestionLabel = UILabel(frame: CGRectZero)
-    suggestionLabelPosition = CGPointZero
-    
     super.init(frame: frame)
 
     NSNotificationCenter.defaultCenter().addObserver(
@@ -44,9 +41,6 @@ class AutocompleteTextField: UITextField {
   }
 
   required init?(coder aDecoder: NSCoder) {
-    suggestionLabel = UILabel(frame: CGRectZero)
-    suggestionLabelPosition = CGPointZero
-
     super.init(coder: aDecoder)
 
     NSNotificationCenter.defaultCenter().addObserver(
@@ -88,9 +82,8 @@ extension AutocompleteTextField {
     withSuggestion suggestion: String, font: UIFont?, offset: CGPoint ) -> CGRect {
       let textContainer = textRectForBounds(bounds)
 
-      guard let textRange = textRangeFromPosition(
-        beginningOfDocument,
-        toPosition: endOfDocument) else {
+      guard let textRange = textRangeFromPosition(beginningOfDocument, toPosition: endOfDocument)
+        else {
           return CGRectZero
       }
 
