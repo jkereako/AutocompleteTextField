@@ -16,7 +16,13 @@ protocol AutocompleteDelegate: class {
   func textfield(textfield: AutocompleteTextField, didAcceptSuggestion suggestion: String)
 }
 
+@IBDesignable
 class AutocompleteTextField: UITextField {
+
+  // MARK: - IBInspectable
+  @IBInspectable var suggestionColor: UIColor = UIColor.grayColor()
+  @IBInspectable var suggestionBackgroundColor: UIColor = UIColor.clearColor()
+
   var autoCompleteDataSource: AutocompleteDataSource?
   weak var autoCompleteDelegate: AutocompleteDelegate?
   var suggestionLabelPosition: CGPoint
@@ -26,9 +32,15 @@ class AutocompleteTextField: UITextField {
   override init(frame: CGRect) {
     suggestionLabel = UILabel(frame: CGRectZero)
     suggestionLabelPosition = CGPointZero
+    
     super.init(frame: frame)
 
-    setUp(suggestionLabel: suggestionLabel)
+    NSNotificationCenter.defaultCenter().addObserver(
+      self,
+      selector: Selector("textDidChange"),
+      name: UITextFieldTextDidChangeNotification,
+      object: self
+    )
   }
 
   required init?(coder aDecoder: NSCoder) {
@@ -37,35 +49,27 @@ class AutocompleteTextField: UITextField {
 
     super.init(coder: aDecoder)
 
-    setUp(suggestionLabel: suggestionLabel)
+    NSNotificationCenter.defaultCenter().addObserver(
+      self,
+      selector: Selector("textDidChange"),
+      name: UITextFieldTextDidChangeNotification,
+      object: self
+    )
   }
 
   deinit {
     NSNotificationCenter.defaultCenter().removeObserver(self)
   }
 
-  override var font: UIFont? {
-    didSet {
-      suggestionLabel.font = font
-    }
-  }
+  override func drawRect(rect: CGRect) {
+    suggestionLabel.font = font
+    suggestionLabel.backgroundColor = suggestionBackgroundColor
+    suggestionLabel.textColor = suggestionColor
+    suggestionLabel.lineBreakMode = .ByClipping
+    suggestionLabel.hidden = true
 
-  func setUp(suggestionLabel label: UILabel) {
-    label.font = font
-    label.backgroundColor = UIColor.clearColor()
-    label.textColor = UIColor.grayColor()
-    label.lineBreakMode = .ByClipping
-    label.hidden = true
-
-    addSubview(label)
-    bringSubviewToFront(label)
-
-    // Be aware each time the textfield changes
-    NSNotificationCenter.defaultCenter().addObserver(self,
-      selector: Selector("textDidChange"),
-      name: UITextFieldTextDidChangeNotification,
-      object: self
-    )
+    addSubview(suggestionLabel)
+    bringSubviewToFront(suggestionLabel)
   }
 
   func textDidChange() {
