@@ -87,7 +87,7 @@ extension AutocompleteTextField {
       guard let textRange = textRangeFromPosition(
         beginningOfDocument,
         toPosition: endOfDocument) else {
-        return CGRectZero
+          return CGRectZero
       }
 
       let textRect = CGRectIntegral(firstRectForRange(textRange))
@@ -104,7 +104,10 @@ extension AutocompleteTextField {
       let prefixTextSize = prefixTextRect?.size
 
       let suggestionTextRect = suggestion.boundingRectWithSize(
-        CGSizeMake(textContainer.size.width - (prefixTextSize?.width ?? 0), textContainer.size.height),
+        CGSize(
+          width: textContainer.size.width - (prefixTextSize?.width ?? 0),
+          height: textContainer.size.height
+        ),
         options: [.UsesLineFragmentOrigin, .UsesFontLeading],
         attributes: [NSFontAttributeName: label.font, NSParagraphStyleAttributeName: pStyle],
         context: nil
@@ -112,11 +115,11 @@ extension AutocompleteTextField {
 
       let suggestionTextSize = suggestionTextRect.size
 
-      return CGRectMake(
-        CGRectGetMinX(textContainer) + CGRectGetMaxX(textRect) + offset.x,
-        CGRectGetMinY(textContainer) + offset.y,
-        suggestionTextSize.width,
-        textContainer.size.height
+      return CGRect(
+        x: CGRectGetMinX(textContainer) + CGRectGetMaxX(textRect) + offset.x,
+        y: CGRectGetMinY(textContainer) + offset.y,
+        width: suggestionTextSize.width,
+        height: textContainer.size.height
       )
   }
 
@@ -145,7 +148,7 @@ extension AutocompleteTextField {
     }
 
     text? += suggestion
-    
+
     autoCompleteDelegate?.textfield(self, didAcceptSuggestion: text!)
 
     suggestionLabel(label, updateWithSuggestion: suggestion)
@@ -176,7 +179,7 @@ extension AutocompleteTextField {
     if let suggestion = suggestionLabel.text {
       suggestionLabel(suggestionLabel, acceptSuggestion: suggestion)
     }
-
+    
     return super.resignFirstResponder()
   }
 }
