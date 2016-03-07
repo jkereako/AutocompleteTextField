@@ -78,13 +78,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		36002AA91C8DF12300F2F4E9 /* SupportFiles */ = {
+			isa = PBXGroup;
+			children = (
+				36464F631C29ABB800942BE3 /* Info.plist */,
+			);
+			path = SupportFiles;
+			sourceTree = "<group>";
+		};
+		36002AAA1C8DF12A00F2F4E9 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				36464F761C29ABB900942BE3 /* UITests */,
+				36464F6B1C29ABB900942BE3 /* UnitTests */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		36002AAB1C8DF13300F2F4E9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				36464F5E1C29ABB800942BE3 /* Assets.xcassets */,
+				36464F601C29ABB800942BE3 /* LaunchScreen.storyboard */,
+				36464F5B1C29ABB800942BE3 /* Main.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		36464F4B1C29ABB800942BE3 = {
 			isa = PBXGroup;
 			children = (
-				36464F561C29ABB800942BE3 /* AutocompleteTextField */,
-				36464F6B1C29ABB900942BE3 /* AutocompleteTextFieldTests */,
-				36464F761C29ABB900942BE3 /* AutocompleteTextFieldUITests */,
 				36464F551C29ABB800942BE3 /* Products */,
+				36002AAB1C8DF13300F2F4E9 /* Resources */,
+				36464F561C29ABB800942BE3 /* Source */,
+				36002AA91C8DF12300F2F4E9 /* SupportFiles */,
+				36002AAA1C8DF12A00F2F4E9 /* Tests */,
 			);
 			sourceTree = "<group>";
 		};
@@ -98,37 +126,33 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		36464F561C29ABB800942BE3 /* AutocompleteTextField */ = {
+		36464F561C29ABB800942BE3 /* Source */ = {
 			isa = PBXGroup;
 			children = (
 				36464F571C29ABB800942BE3 /* AppDelegate.swift */,
-				36464F591C29ABB800942BE3 /* TableViewController.swift */,
 				36464F851C29B1E600942BE3 /* AutocompleteTextField.swift */,
 				36464F871C29ECF000942BE3 /* DataSource.swift */,
-				36464F5B1C29ABB800942BE3 /* Main.storyboard */,
-				36464F5E1C29ABB800942BE3 /* Assets.xcassets */,
-				36464F601C29ABB800942BE3 /* LaunchScreen.storyboard */,
-				36464F631C29ABB800942BE3 /* Info.plist */,
+				36464F591C29ABB800942BE3 /* TableViewController.swift */,
 			);
-			path = AutocompleteTextField;
+			path = Source;
 			sourceTree = "<group>";
 		};
-		36464F6B1C29ABB900942BE3 /* AutocompleteTextFieldTests */ = {
+		36464F6B1C29ABB900942BE3 /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
 				36464F6C1C29ABB900942BE3 /* AutocompleteTextFieldTests.swift */,
 				36464F6E1C29ABB900942BE3 /* Info.plist */,
 			);
-			path = AutocompleteTextFieldTests;
+			path = UnitTests;
 			sourceTree = "<group>";
 		};
-		36464F761C29ABB900942BE3 /* AutocompleteTextFieldUITests */ = {
+		36464F761C29ABB900942BE3 /* UITests */ = {
 			isa = PBXGroup;
 			children = (
 				36464F771C29ABB900942BE3 /* AutocompleteTextFieldUITests.swift */,
 				36464F791C29ABB900942BE3 /* Info.plist */,
 			);
-			path = AutocompleteTextFieldUITests;
+			path = UITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -307,6 +331,7 @@
 				36464F5C1C29ABB800942BE3 /* Base */,
 			);
 			name = Main.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 		36464F601C29ABB800942BE3 /* LaunchScreen.storyboard */ = {
@@ -315,6 +340,7 @@
 				36464F611C29ABB800942BE3 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -407,7 +433,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = AutocompleteTextField/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/SupportFiles/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.alexisdigital.AutocompleteTextField;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -418,7 +444,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = AutocompleteTextField/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/SupportFiles/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.alexisdigital.AutocompleteTextField;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -429,7 +455,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = AutocompleteTextFieldTests/Info.plist;
+				INFOPLIST_FILE = Tests/UnitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.alexisdigital.AutocompleteTextFieldTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -441,7 +467,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = AutocompleteTextFieldTests/Info.plist;
+				INFOPLIST_FILE = Tests/UnitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.alexisdigital.AutocompleteTextFieldTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -452,7 +478,7 @@
 		36464F831C29ABB900942BE3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = AutocompleteTextFieldUITests/Info.plist;
+				INFOPLIST_FILE = Tests/UITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.alexisdigital.AutocompleteTextFieldUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -464,7 +490,7 @@
 		36464F841C29ABB900942BE3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = AutocompleteTextFieldUITests/Info.plist;
+				INFOPLIST_FILE = Tests/UITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.alexisdigital.AutocompleteTextFieldUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
